@@ -18,6 +18,34 @@ Progetto didattico in C per la gestione e l'analisi di indirizzi IPv4.
     └── ipv4.c          # Implementazione modulo IPv4
 ```
 
+## Documentazione del Codice
+
+Tutti i file header sono completamente documentati in **stile Doxygen** con:
+- **Descrizione delle strutture**: Scopo e contenuto di ogni struct
+- **Documentazione dei campi**: Ogni campo è commentato con `/**< descrizione */`
+- **Documentazione delle funzioni**: Include `@brief`, `@param`, `@return`
+- **Esempi e dettagli**: Informazioni su range validi, formati supportati, comportamento
+
+### Vantaggi della Documentazione
+
+✅ **Autocomplete intelligente**: Gli IDE mostrano la documentazione mentre scrivi  
+✅ **Facile comprensione**: Capire cosa fa una funzione senza leggere l'implementazione  
+✅ **Manutenibilità**: Modifiche future più semplici con documentazione chiara  
+✅ **Generazione automatica**: Compatibile con Doxygen per generare HTML/PDF  
+
+### Esempio di Utilizzo nell'IDE
+
+Quando scrivi codice, l'IDE mostra automaticamente:
+```c
+// Scrivendo "assegna_ip(" l'IDE mostra:
+/**
+ * @brief Assegna un indirizzo IP specificando i 4 ottetti
+ * @param ip_address Puntatore alla struttura IpV4_address da modificare
+ * @param a Primo ottetto (0-255)
+ * ...
+ */
+```
+
 ## Descrizione dei File
 
 ### File Header (include/)
