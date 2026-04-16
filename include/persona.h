@@ -43,4 +43,7 @@ void assegna_nome(Persona *persona, char nome[]);
  */
 void assegna_cognome(Persona *persona, char cognome[]);
 
+Persona *creaPersona(char nome[], char cognome[]);
+void distruggiPersona(Persona *persona);
+
 #endif
