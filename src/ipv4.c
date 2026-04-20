@@ -68,7 +68,7 @@ void stampa_ip(IpV4_address *ip_address)
     printf("%d.%d.%d.%d\n", ip_address->ip[0], ip_address->ip[1], ip_address->ip[2], ip_address->ip[3]);
 }
 
-void calcola_rete(IpV4_address *ip_address, IpV4 rete)
+void calcola_rete(IpV4_address *ip_address, IpV4_octets rete)
 {
     for(int i = 0; i < 4; i++)
     {
@@ -76,7 +76,7 @@ void calcola_rete(IpV4_address *ip_address, IpV4 rete)
     }
 }
 
-void calcola_broadcast(IpV4_address *ip_address, IpV4 broadcast)
+void calcola_broadcast(IpV4_address *ip_address, IpV4_octets broadcast)
 {
     for(int i = 0; i < 4; i++)
     {
@@ -84,7 +84,7 @@ void calcola_broadcast(IpV4_address *ip_address, IpV4 broadcast)
     }
 }
 
-int conta_bit_mask(Mask mask)
+int conta_bit_mask(Mask_octets mask)
 {
     int count = 0;
     for(int i = 0; i < 4; i++)
@@ -99,7 +99,7 @@ int conta_bit_mask(Mask mask)
     return count;
 }
 
-char determina_classe(IpV4 ip)
+char determina_classe(IpV4_octets ip)
 {
     unsigned char primo_ottetto = ip[0];
     
@@ -125,7 +125,7 @@ char determina_classe(IpV4 ip)
     }
 }
 
-int is_ip_privato(IpV4 ip)
+int is_ip_privato(IpV4_octets ip)
 {
     if(ip[0] == IP_PRIVATO_10)
     {
@@ -144,7 +144,7 @@ int is_ip_privato(IpV4 ip)
 
 void stampa_info_rete(IpV4_address *ip_address)
 {
-    IpV4 rete, broadcast;
+    IpV4_octets rete, broadcast;
     
     calcola_rete(ip_address, rete);
     calcola_broadcast(ip_address, broadcast);

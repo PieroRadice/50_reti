@@ -5,18 +5,18 @@
 #include "persona.h"
 
 /**
- * @brief Tipo per rappresentare un indirizzo IPv4
+ * @brief Tipo per rappresentare gli ottetti di un indirizzo IPv4
  * 
  * Array di 4 byte (ottetti) che rappresentano un indirizzo IP
  */
-typedef unsigned char IpV4[4];
+typedef unsigned char IpV4_octets[4];
 
 /**
- * @brief Tipo per rappresentare una maschera di rete
+ * @brief Tipo per rappresentare gli ottetti di una maschera di rete
  * 
  * Array di 4 byte che rappresentano una subnet mask
  */
-typedef unsigned char Mask[4];
+typedef unsigned char Mask_octets[4];
 
 /**
  * @brief Struttura completa per un indirizzo IPv4 con metadati
@@ -26,8 +26,8 @@ typedef unsigned char Mask[4];
  */
 typedef struct
 {
-    IpV4 ip;                    /**< Indirizzo IPv4 (4 ottetti) */
-    Mask mask;                  /**< Maschera di rete (4 ottetti) */
+    IpV4_octets ip;             /**< Indirizzo IPv4 (4 ottetti) */
+    Mask_octets mask;           /**< Maschera di rete (4 ottetti) */
     char dominio[MAX_STRG];     /**< Nome di dominio associato */
     Persona *proprietario;      /**< Puntatore al proprietario (opzionale) */
 } IpV4_address;
@@ -93,7 +93,7 @@ void stampa_ip(IpV4_address *ip_address);
  * @param ip_address Puntatore alla struttura IpV4_address con IP e maschera
  * @param rete Array di 4 byte dove salvare l'indirizzo di rete calcolato
  */
-void calcola_rete(IpV4_address *ip_address, IpV4 rete);
+void calcola_rete(IpV4_address *ip_address, IpV4_octets rete);
 
 /**
  * @brief Calcola l'indirizzo di broadcast (IP OR NOT maschera)
@@ -101,7 +101,7 @@ void calcola_rete(IpV4_address *ip_address, IpV4 rete);
  * @param ip_address Puntatore alla struttura IpV4_address con IP e maschera
  * @param broadcast Array di 4 byte dove salvare l'indirizzo di broadcast calcolato
  */
-void calcola_broadcast(IpV4_address *ip_address, IpV4 broadcast);
+void calcola_broadcast(IpV4_address *ip_address, IpV4_octets broadcast);
 
 /**
  * @brief Conta i bit a 1 nella maschera di rete (notazione CIDR)
@@ -109,7 +109,7 @@ void calcola_broadcast(IpV4_address *ip_address, IpV4 broadcast);
  * @param mask Maschera di rete da analizzare
  * @return Numero di bit a 1 (es: 255.255.255.0 ritorna 24)
  */
-int conta_bit_mask(Mask mask);
+int conta_bit_mask(Mask_octets mask);
 
 /**
  * @brief Determina la classe dell'indirizzo IP (A, B, C, D, E)
@@ -124,7 +124,7 @@ int conta_bit_mask(Mask mask);
  * @param ip Indirizzo IPv4 da classificare
  * @return Carattere rappresentante la classe ('A', 'B', 'C', 'D', 'E')
  */
-char determina_classe(IpV4 ip);
+char determina_classe(IpV4_octets ip);
 
 /**
  * @brief Verifica se l'IP è privato secondo RFC 1918
@@ -137,7 +137,7 @@ char determina_classe(IpV4 ip);
  * @param ip Indirizzo IPv4 da verificare
  * @return 1 se privato, 0 se pubblico
  */
-int is_ip_privato(IpV4 ip);
+int is_ip_privato(IpV4_octets ip);
 
 /**
  * @brief Stampa tutte le informazioni sulla rete
